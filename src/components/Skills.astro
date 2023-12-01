@@ -2,26 +2,43 @@
 import Icon from './Icon.astro';
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
+<section class=" skills">
+	<div class="box stack gap-2 lg:gap-4">
+		<Icon icon="design" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>Design</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+		<ul>
+			<li>Figma</li>
+			<li>Tailwind</li>
+		</ul>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
+	<div class="box stack gap-2 lg:gap-4">
+		<Icon icon="frontend" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>Frontend</h2>
-		<p>Neque viverra justo nec ultrices dui. Est ultricies integer quis auctor elit.</p>
+		<ul>
+			<li>Typescript</li>
+			<li>React</li>
+			<li>Astro</li>
+		</ul>	
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+	<div class="box stack gap-2 lg:gap-4">
+		<Icon icon="backend" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>Backend</h2>
-		<p>Urna porttitor rhoncus dolor purus non enim praesent ornare.</p>
+		<ul>
+			<li>Express</li>
+			<li>Adonis</li>
+			<li>Mongo</li>
+			<li>MySQL</li>
+			<li>PostgreSQL</li>
+		</ul>	
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+	<div class="box stack gap-2 lg:gap-4">
+		<Icon icon="devops" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>DevOps</h2>
-		<p>Urna porttitor rhoncus dolor purus non enim praesent ornare.</p>
+		<ul>
+			<li>Nginx</li>
+			<li>Docker</li>
+			<li>Docker Compose</li>
+		</ul>	
 	</div>
 </section>
 
@@ -39,6 +56,9 @@ import Icon from './Icon.astro';
 		flex-direction: column;
 		gap: 3rem;
 	}
+	.stack {
+		width: 100%;
+	}
 
 	.skills h2 {
 		font-size: var(--text-lg);
@@ -48,7 +68,12 @@ import Icon from './Icon.astro';
 		color: var(--gray-400);
 	}
 
-	@media (min-width: 50em) {
+	.skills ul {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	@media (min-width: 35em) {
 		.box {
 			border-radius: 1.5rem;
 			padding: 2.5rem;
@@ -56,12 +81,22 @@ import Icon from './Icon.astro';
 
 		.skills {
 			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			gap: 5rem;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
 		}
 
 		.skills h2 {
 			font-size: var(--text-2xl);
 		}
 	}
+
+	@media (min-width: 70em) {
+		.skills {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 5rem;
+		}
+
+	}
+
+
 </style>
