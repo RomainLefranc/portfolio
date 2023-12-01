@@ -1,250 +1,250 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import CallToAction from '../components/CallToAction.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
+import CallToAction from "../components/CallToAction.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+import Pill from "../components/Pill.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Skills from '../components/Skills.astro';
-import PillLink from '../components/PillLink.astro';
-import IndexHero from '../components/IndexHero.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import Skills from "../components/Skills.astro";
+import PillLink from "../components/PillLink.astro";
+import IndexHero from "../components/IndexHero.astro";
 
 // Content Fetching: List four most recent  projects
-const projects = (await getCollection('project'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+const projects = (await getCollection("project"))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 4);
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
+  <div class="stack gap-20 lg:gap-48">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <div class="fullscreen">
+        <header class="hero">
+          <IndexHero
+            tagline="Je suis un développeur FullStack basé actuellement sur l'île de la Réunion, Océan Indien"
+            align="start"
+          >
+            <div class="roles">
+              <PillLink href="mailto:lefranc46@gmail.com">
+                <Icon icon="paper-plane-tilt" size="1.33em" />
+                Lefranc46@gmail.com
+              </PillLink>
+              <PillLink href="https://github.com/RomainLefranc">
+                <Icon icon="github-logo" size="1.33em" /> GitHub
+              </PillLink>
+              <PillLink href="https://www.linkedin.com/in/romainlefranc">
+                <Icon icon="linkedin-logo" size="1.33em" /> Linkedin
+              </PillLink>
+            </div>
+          </IndexHero>
 
-			<div class="fullscreen">
-				<header class="hero">
-					<IndexHero
-						tagline="Je suis un développeur FullStack basé actuellement sur l'île de la Réunion, Océan Indien"
-						align="start"
-					>
-						<div class="roles">
-							<PillLink href='mailto:lefranc46@gmail.com'><Icon icon="paper-plane-tilt" size="1.33em" /> Lefranc46@gmail.com</PillLink>
-							<PillLink href='https://github.com/RomainLefranc'><Icon icon="github-logo" size="1.33em" /> GitHub</PillLink>
-							<PillLink href='https://www.linkedin.com/in/romainlefranc'><Icon icon="linkedin-logo" size="1.33em" /> Linkedin</PillLink>
-						</div>
-					</IndexHero>
-	
-					<img
-						alt="Romain photo"
-						width="500"
-						height="500"
-						src="/portfolio/assets/portrait.png"
-					/>
-				</header>
+          <img
+            alt="Romain photo"
+            width="500"
+            height="500"
+            src="/portfolio/assets/portrait.png"
+          />
+        </header>
+      </div>
 
-			</div>
+      <Skills />
+    </div>
 
+    <main class="wrapper stack gap-20 lg:gap-48">
+      <section class="section with-background with-cta">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>Projets mis en avant</h3>
+          <p>Jetez un œil ci-dessous à certains de mes projets</p>
+        </header>
 
-			<Skills />
-		</div>
+        <div class="gallery">
+          <Grid variant="offset">
+            {
+              projects.map((project) => (
+                <li>
+                  <PortfolioPreview project={project} />
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Projets mis en avant</h3>
-					<p>Jetez un œil ci-dessous à certains de mes projets</p>
-				</header>
+        <div class="cta">
+          <CallToAction href="/portfolio/project/">
+            Voir plus
+            <Icon icon="arrow-right" size="1.2em" />
+          </CallToAction>
+        </div>
+      </section>
+    </main>
 
-				<div class="gallery">
-					<Grid variant="offset">
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-
-				<div class="cta">
-					<CallToAction href="/portfolio/project/">
-						Voir plus
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
-		</main>
-
-		<ContactCTA />
-	</div>
+    <ContactCTA />
+  </div>
 </BaseLayout>
 
 <style>
+  .fullscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 3.5rem - 10rem);
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 
-	.fullscreen {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: calc(100vh - 3.5rem - 10rem);
-	}
-	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-	}
+  .roles {
+    display: none;
+  }
 
-	.roles {
-		display: none;
-	}
+  .hero img {
+    width: 70%;
+    height: auto;
+    flex-shrink: 0;
+  }
 
-	.hero img {
-		width: 70%;
-		height: auto;
-		flex-shrink: 0;
-	}
+  @media (min-width: 60em) {
+    .hero {
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
 
-	@media (min-width: 60em) {
-		.hero {
-			display: grid;
-			grid-template-columns: 2fr 2fr;
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
-		}
+    .hero img {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+    }
 
-		.hero img {
-		width: 100%;
-		height: auto;
-		flex-shrink: 0;
-	}
+    .roles {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-		}
+  @media (min-width: 70em) {
+    .hero {
+      grid-template-columns: 6fr 4fr;
+    }
+  }
 
-	}
+  /* ====================================================== */
 
-	@media (min-width: 70em) {
-		.hero {
-			grid-template-columns: 6fr 4fr;
-		}
+  .section {
+    display: grid;
+    gap: 2rem;
+  }
 
-	}
+  .with-background {
+    position: relative;
+  }
 
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
 
-	/* ====================================================== */
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background:
+      url("/portfolio/assets/backgrounds/noise.png") top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
 
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
 
-	.with-background {
-		position: relative;
-	}
+  .section-header {
+    justify-self: center;
+    text-align: center;
+    max-width: 50ch;
+    font-size: var(--text-md);
+    color: var(--gray-300);
+  }
 
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
+  .section-header h3 {
+    font-size: var(--text-2xl);
+  }
 
-		content: '';
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url('/portfolio/assets/backgrounds/noise.png') top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
+  @media (min-width: 50em) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+      gap: 5rem;
+    }
 
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
-	}
+    .section.with-cta {
+      grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
+    }
 
-	.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 50ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
-	}
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
 
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
+    .section-header h3 {
+      font-size: var(--text-4xl);
+    }
 
-	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
-		}
+    .with-cta .section-header {
+      justify-self: flex-start;
+      text-align: left;
+    }
 
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
-		}
+    .gallery {
+      grid-area: gallery;
+    }
 
-		.section-header {
-			grid-area: header;
-			font-size: var(--text-lg);
-		}
+    .cta {
+      grid-area: cta;
+    }
+  }
 
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
+  /* ====================================================== */
 
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
 
-		.gallery {
-			grid-area: gallery;
-		}
-
-		.cta {
-			grid-area: cta;
-		}
-	}
-
-	/* ====================================================== */
-
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
-
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
-		}
-	}
+  @media (min-width: 50em) {
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
 </style>

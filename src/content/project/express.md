@@ -5,20 +5,11 @@ img: /portfolio/assets/stock-2.jpg
 img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 description: |
   Une API REST d'authentification sécurisée développée avec Express en TypeScript, avec Lucia Auth, Redis, Mongo et Docker
-
+repo_uri: https://github.com/RomainLefranc/express-lucia-auth
 tags:
   - Backend
   - NodeJS
   - Mongo
-  # - Typescript
-  # - Authentication
-  # - Express
-  # - REST API
-  # - Lucia
-  # - Rate Limiting
-  # - Docker
-  # - Oauth
-  # - Swagger
 ---
 
 ## Technologies Utilisées

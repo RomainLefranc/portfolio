@@ -1,102 +1,104 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 ---
 
-<section class=" skills">
-	<div class="box stack gap-2 lg:gap-4">
-		<Icon icon="design" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Design</h2>
-		<ul>
-			<li>Figma</li>
-			<li>Tailwind</li>
-		</ul>
-	</div>
-	<div class="box stack gap-2 lg:gap-4">
-		<Icon icon="frontend" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Frontend</h2>
-		<ul>
-			<li>Typescript</li>
-			<li>React</li>
-			<li>Astro</li>
-		</ul>	
-	</div>
-	<div class="box stack gap-2 lg:gap-4">
-		<Icon icon="backend" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Backend</h2>
-		<ul>
-			<li>Express</li>
-			<li>Adonis</li>
-			<li>Mongo</li>
-			<li>MySQL</li>
-			<li>PostgreSQL</li>
-		</ul>	
-	</div>
-	<div class="box stack gap-2 lg:gap-4">
-		<Icon icon="devops" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>DevOps</h2>
-		<ul>
-			<li>Nginx</li>
-			<li>Docker</li>
-			<li>Docker Compose</li>
-		</ul>	
-	</div>
+<section class="skills">
+  <div class="box stack gap-2 lg:gap-4">
+    <Icon icon="design" color="var(--accent-regular)" size="2.5rem" gradient />
+    <h2>Design</h2>
+    <ul>
+      <li>Figma</li>
+      <li>Tailwind</li>
+    </ul>
+  </div>
+  <div class="box stack gap-2 lg:gap-4">
+    <Icon
+      icon="frontend"
+      color="var(--accent-regular)"
+      size="2.5rem"
+      gradient
+    />
+    <h2>Frontend</h2>
+    <ul>
+      <li>Typescript</li>
+      <li>React</li>
+      <li>Astro</li>
+    </ul>
+  </div>
+  <div class="box stack gap-2 lg:gap-4">
+    <Icon icon="backend" color="var(--accent-regular)" size="2.5rem" gradient />
+    <h2>Backend</h2>
+    <ul>
+      <li>Express</li>
+      <li>Adonis</li>
+      <li>Mongo</li>
+      <li>MySQL</li>
+      <li>PostgreSQL</li>
+    </ul>
+  </div>
+  <div class="box stack gap-2 lg:gap-4">
+    <Icon icon="devops" color="var(--accent-regular)" size="2.5rem" gradient />
+    <h2>DevOps</h2>
+    <ul>
+      <li>Nginx</li>
+      <li>Docker</li>
+      <li>Docker Compose</li>
+    </ul>
+  </div>
 </section>
 
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
+  .box {
+    border: 1px solid var(--gray-800);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    background-color: var(--gray-999_40);
+    box-shadow: var(--shadow-sm);
+  }
 
-	.skills {
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
-	}
-	.stack {
-		width: 100%;
-	}
+  .skills {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .stack {
+    width: 100%;
+  }
 
-	.skills h2 {
-		font-size: var(--text-lg);
-	}
+  .skills h2 {
+    font-size: var(--text-lg);
+  }
 
-	.skills p {
-		color: var(--gray-400);
-	}
+  .skills p {
+    color: var(--gray-400);
+  }
 
-	.skills ul {
-		list-style-type: none;
-		padding: 0;
-	}
+  .skills ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-	@media (min-width: 35em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
+  @media (min-width: 35em) {
+    .box {
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+    }
 
-		.skills {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			gap: 2rem;
-		}
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
 
-		.skills h2 {
-			font-size: var(--text-2xl);
-		}
-	}
+    .skills h2 {
+      font-size: var(--text-2xl);
+    }
+  }
 
-	@media (min-width: 70em) {
-		.skills {
-			grid-template-columns: repeat(4, 1fr);
-			gap: 5rem;
-		}
-
-	}
-
-
+  @media (min-width: 70em) {
+    .skills {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5rem;
+    }
+  }
 </style>
