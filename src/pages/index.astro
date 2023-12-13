@@ -15,6 +15,7 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
 import PillLink from "../components/PillLink.astro";
 import IndexHero from "../components/IndexHero.astro";
+import { Header } from "../components/react/Header";
 
 // Content Fetching: List four most recent  projects
 const projects = (await getCollection("project"))
@@ -29,35 +30,9 @@ const projects = (await getCollection("project"))
   <div class="stack gap-20 lg:gap-48">
     <div class="wrapper stack gap-8 lg:gap-20">
       <div class="fullscreen">
-        <header class="hero">
-          <IndexHero
-            tagline="Je suis un développeur FullStack basé actuellement sur l'île de la Réunion, Océan Indien"
-            align="start"
-          >
-            <div class="roles">
-              <PillLink href="mailto:lefranc46@gmail.com">
-                <Icon icon="paper-plane-tilt" size="1.33em" />
-                 Lefranc46@gmail.com
-              </PillLink>
-              <PillLink href="https://github.com/RomainLefranc">
-                <Icon icon="github-logo" size="1.33em" /> GitHub
-              </PillLink>
-              <PillLink href="https://www.linkedin.com/in/romainlefranc">
-                <Icon icon="linkedin-logo" size="1.33em" /> Linkedin
-              </PillLink>
-            </div>
-          </IndexHero>
-
-          <img
-            alt="Romain photo"
-            width="500"
-            height="500"
-            src="/portfolio/assets/portrait.webp"
-          />
-        </header>
+        <Header client:load />
       </div>
-
-      <Skills />
+      <Skills client:load />
     </div>
 
     <main class="wrapper stack gap-20 lg:gap-48">
@@ -97,50 +72,7 @@ const projects = (await getCollection("project"))
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 3.5rem - 10rem);
-  }
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .roles {
-    display: none;
-  }
-
-  .hero img {
-    width: 70%;
-    height: auto;
-    flex-shrink: 0;
-  }
-
-  @media (min-width: 60em) {
-    .hero {
-      display: grid;
-      grid-template-columns: 2fr 2fr;
-      padding-inline: 2.5rem;
-      gap: 3.75rem;
-    }
-
-    .hero img {
-      width: 100%;
-      height: auto;
-      flex-shrink: 0;
-    }
-
-    .roles {
-      margin-top: 0.5rem;
-      display: flex;
-      gap: 0.5rem;
-    }
-  }
-
-  @media (min-width: 70em) {
-    .hero {
-      grid-template-columns: 6fr 4fr;
-    }
+    height: calc(100vh);
   }
 
   /* ====================================================== */

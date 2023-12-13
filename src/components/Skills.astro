@@ -1,61 +1,43 @@
 ---
 import Icon from "./Icon.astro";
+import { SkillCard } from "./react/SkillCard";
 ---
 
 <section class="skills">
-  <div class="box stack gap-2 lg:gap-4">
-    <Icon icon="design" color="var(--accent-regular)" size="2.5rem" gradient />
-    <h2>Design</h2>
-    <ul>
-      <li>Figma</li>
-      <li>Tailwind</li>
-    </ul>
-  </div>
-  <div class="box stack gap-2 lg:gap-4">
-    <Icon
-      icon="frontend"
-      color="var(--accent-regular)"
-      size="2.5rem"
-      gradient
-    />
-    <h2>Frontend</h2>
-    <ul>
-      <li>Typescript</li>
-      <li>React</li>
-      <li>Astro</li>
-    </ul>
-  </div>
-  <div class="box stack gap-2 lg:gap-4">
-    <Icon icon="backend" color="var(--accent-regular)" size="2.5rem" gradient />
-    <h2>Backend</h2>
-    <ul>
-      <li>Express</li>
-      <li>Adonis</li>
-      <li>Mongo</li>
-      <li>MySQL</li>
-      <li>PostgreSQL</li>
-    </ul>
-  </div>
-  <div class="box stack gap-2 lg:gap-4">
-    <Icon icon="devops" color="var(--accent-regular)" size="2.5rem" gradient />
-    <h2>DevOps</h2>
-    <ul>
-      <li>Nginx</li>
-      <li>Docker</li>
-      <li>Docker Compose</li>
-    </ul>
-  </div>
+  <SkillCard
+    title="Design"
+    delay={0}
+    skills={["Figma", "TailwindCSS"]}
+    icon="design"
+    client:load
+  />
+
+  <SkillCard
+    title="Frontend"
+    delay={1}
+    skills={["Typescript", "React"]}
+    icon="frontend"
+    client:load
+  />
+
+  <SkillCard
+    title="Backend"
+    delay={2}
+    skills={["Express", "Adonis", "Mongo", "MySQL", "PostgreSQL"]}
+    icon="backend"
+    client:load
+  />
+
+  <SkillCard
+    title="DevOps"
+    delay={3}
+    skills={["Nginx", "Docker", "Docker Compose"]}
+    icon="devops"
+    client:load
+  />
 </section>
 
 <style>
-  .box {
-    border: 1px solid var(--gray-800);
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    background-color: var(--gray-999_40);
-    box-shadow: var(--shadow-sm);
-  }
-
   .skills {
     display: flex;
     flex-direction: column;
