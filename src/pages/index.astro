@@ -13,8 +13,6 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
-import PillLink from "../components/PillLink.astro";
-import IndexHero from "../components/IndexHero.astro";
 import { Header } from "../components/react/Header";
 
 // Content Fetching: List four most recent  projects
@@ -32,7 +30,7 @@ const projects = (await getCollection("project"))
       <div class="fullscreen">
         <Header client:load />
       </div>
-      <Skills client:load />
+      <Skills />
     </div>
 
     <main class="wrapper stack gap-20 lg:gap-48">
